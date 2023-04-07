@@ -1,0 +1,24 @@
+# for each test period:
+    # for each sma pair:
+        # for each row, starting on the second:
+            # if sma[0] == sma[1]:
+                # pad returns
+                
+            # if sma[0] rises above sma[1]: # bull signal
+                # if long already open:
+                    # pad pad values
+                # if no long positon open:
+                    # open long
+                # if short open:
+                    # close short
+
+            # if sma[0] falls bellow sma[1]: # bear signal
+               # if short already open:
+                    # pad values
+                # if no short positon open:
+                    # open short
+                # if long open:
+                    # close long
+        
+        # Chart returns
+        # ...
