@@ -1,1 +1,1 @@
-# batch-sma-analysis
+# BTC-trendfollowing
