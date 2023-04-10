@@ -2,19 +2,19 @@
 This repo contians four scripts tasked with testing a simple automated trend following strategy. The asset under evalutaion is BTC/USD. This strategy can be summarised as follows:
 
 ## 1. Long only bull market strategy
-  a. A long position is opened when the short term SMA crosses above the long term SMA.
-  b. A long position is closed when the the short term SMA falls below the long term SMA.
+  * A long position is opened when the short term SMA crosses above the long term SMA.
+  * A long position is closed when the the short term SMA falls below the long term SMA.
 
 ## 2. Short only bear market strategy
-  a. A short position is opened when the short term SMA falls below the long term SMA.
-  b. A short position is closed when the short term SMA crosses above the long term SMA.
+  * A short position is opened when the short term SMA falls below the long term SMA.
+  * A short position is closed when the short term SMA crosses above the long term SMA.
 
 ## 3. Long / short bull market strategy
-  a. A long position is opened and a short position is closed when the short term SMA crosses above the long term SMA.
-  b. A long position is closed and a short position is opened when the the short term SMA falls below the long term SMA.
+  * A long position is opened and a short position is closed when the short term SMA crosses above the long term SMA.
+  * A long position is closed and a short position is opened when the the short term SMA falls below the long term SMA.
   
 ## 4. Long / short bear market strategy
-  a. Strategy 3 implemented over a bear market
+  * Strategy 3 implemented over a bear market
 
 ## Criteria for success
 Regarding the first strategy, the goal is to identify which SMA pairings can most closely match (or potentially exceed) the performance of a buy and hold strategy for the three historical bull markets:
