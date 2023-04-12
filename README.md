@@ -38,10 +38,3 @@ The goal of this strategy is to evaluate the feasibility of closely matching or 
 
 ### Strategy 4
 As discussed in strategy three, tested over the previously discussed bear market periods.
-
-```
-function example() {
-  console.log("code block");
-}
-```
-
