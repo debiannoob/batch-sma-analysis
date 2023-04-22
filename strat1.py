@@ -37,19 +37,25 @@ def findDrawDowns(series):
     i = 0
     drawdown_percentages = np.array([])
     while i < len(series):
+        #print('i: '+str(i))
         if i+1 < len(series) and series[i+1] < series[i]: # start of a price decline id'd
             peak_index = i # save peak index
-            peak = series[i] # save peak value
+            #print('peak index: '+str(peak_index))
+            peak_value = series[i] # save peak value
+            #print('peak value: '+str(peak_value))
             search_series = np.array(series[peak_index+1:]) # convert series to array, from values after peak to end
             try: # If remaining values make or match current peak, make end index
-                end_index = int(np.argwhere(search_series >= peak)[0])
+                end_index = int(np.argwhere(search_series >= peak_value)[0])
             except: # otherwise, make end of series the end index
                 end_index = len(series)
             search_series = search_series[:int(end_index)] # Remove unnecessary search values, if any
-            trough = np.min(search_series) # Get trough value
-            percent_decline = ((peak - trough) / peak) * 100 # Calculate percentage drawdown
+            #print('searching for trough in search_series: '+str(search_series))
+            trough_value = np.min(search_series) # Get trough value
+            percent_decline = ((peak_value - trough_value) / peak_value) * 100 # Calculate percentage drawdown
             drawdown_percentages = np.append(drawdown_percentages, percent_decline) # Save to array
-            i += int(int(end_index)) # Resume search for next drawdown
+            #print('end_index in in pre sliced sub series: '+str(end_index))
+            i += end_index+1 # Resume search for next drawdown
+            #print('......')
         else:
             i += 1 # Resume search for next drawdown
     return drawdown_percentages
