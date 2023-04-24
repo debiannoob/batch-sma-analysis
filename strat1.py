@@ -182,24 +182,34 @@ for df in df_list:
         # Append performance data to output dataframe
         output_df.loc[sma_pair_count] = [f'{sma[0]} vs {sma[1]}', f'{df.iloc[0].name.year} - {df.iloc[-1].name.year}',max_dd,len(dd),trade_count,rtn_multiple,hodl[test_period_count],multiple_ratio]
         #print(output_df)
-        sma_pair_count += 1
+        
         '''
         # Plot/Save charts
-        ax = df[['Cumulative return', 'Close']].plot(figsize=(15,9), secondary_y='Close', logy=True)
+        sns.set_style('white')
+        fig, ax = plt.subplots(figsize=(15,9))
+        labels = ['Trading rule', 'Buy & hold']
+        ax.plot(np.log(df['Cumulative return']))
+        ax.plot(np.log(df['Close']))
+        title = f'Long {sma[0]} vs {sma[1]} {df.iloc[0].name.year} - {df.iloc[-1].name.year}'
+        ax.set_title(title, fontsize=14, fontweight='bold')
+        ax.set_ylabel("Returns (log)", fontsize=13)
+        ax.set_xlabel('Date', fontsize=13)
+        plt.xticks(rotation=45)
+        ax.legend(labels = labels, fontsize = 'large', loc = 'lower right')
+        
         ax.text(
-            x = 0.02, 
-            y = 0.96,
-            #x = 0.375,
-            #y = 0.98,
+            x = 0.05, 
+            y = 0.95,
             fontsize = 14,
             s = f"Max DD: {max_dd}% \nDD Freq: {len(dd)} \nTrades: {trade_count} \nReturn multiple: {rtn_multiple}x \nHODL Multiple {hodl[test_period_count]}x \nMultiple Ratio: {multiple_ratio}", 
             transform = ax.transAxes,  
-            ha = "left", va = "top",
-            bbox=dict(alpha=0.3,facecolor='white', edgecolor='black', pad=10)
+            bbox=dict(alpha=0.3,facecolor='white', edgecolor='black', pad=10),
+            verticalalignment='top'
         )
-        ax.set_title(f'Long {sma[0]} vs {sma[1]} {df.iloc[0].name.year} - {df.iloc[-1].name.year}', fontsize=14)
-        plt.savefig(f'{charts}{ax.get_title()}.png')
+        sns.despine()
+        plt.savefig(f'{charts}{title}.png')
         '''
+        sma_pair_count += 1
         # reset variables for next test period
         returns = []
         #names = []
